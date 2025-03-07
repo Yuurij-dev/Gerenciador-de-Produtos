@@ -1,0 +1,20 @@
+.aside{
+    padding: 30px;
+}
+
+.nav-sidebar{
+    margin: 30px 0 0 10px;
+}
+.nav-sidebar ul li {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+.icon-li{
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+.button-sidebar{
+    padding: 10px;
+}

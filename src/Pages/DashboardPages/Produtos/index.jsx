@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
+import { DashBoardSideBar } from "../../../Components/DashBoardSideBar";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
-import { DashBoardSideBar } from "../../Components/DashBoardSideBar";
+export default function Produtos() {
 
-export default function Dashboard() {
     const navigate = useNavigate()
 
     const [isLoggedIn, setIsLoggedIn] = useState(false)
@@ -19,12 +19,12 @@ export default function Dashboard() {
         }
       }, [navigate]);
 
-
     return(
         <div className="w-full flex">
-            <DashBoardSideBar/>
+            <DashBoardSideBar />
+
             <div>
-              <h1>Dashboard</h1>
+                <h1>meus produtos</h1>
             </div>
         </div>
     )
