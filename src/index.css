@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+  transition: .3s ease;
+}
+
+body{
+  width: 100%;
+
+  background-color: #fafafa;
+}
