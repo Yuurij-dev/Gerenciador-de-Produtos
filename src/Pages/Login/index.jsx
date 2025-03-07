@@ -10,6 +10,7 @@ export function Login() {
 
     const navigate = useNavigate()
 
+    const [isLoading, setIsLoading] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(false)
 
     useEffect( () => {
@@ -24,6 +25,7 @@ export function Login() {
     const [showPassword, setShowPassword] = useState(false)
 
     const handleVisiblePass = (e) => {
+        e.preventDefault();
         setShowPassword(!showPassword)
     }
 
@@ -39,25 +41,37 @@ export function Login() {
         setPassLogin(password)
     }
 
-    function makeLogin() {
+    function makeLogin(event) {
+        event.preventDefault();
         const erro = document.getElementById('erro')
+        const loginButton = document.getElementById('login-button')
 
-        let user = 'Admin'
+        let user = 'admin'
         let pass = 'admin123'
 
         if(userLogin === user & passLogin === pass) {
             erro.style.display = 'none'
-            localStorage.setItem('user', 'loggedIn');
-            setIsLoggedIn(true);
-            return navigate('/dashboard')
+
+            setIsLoading(true)
+            loginButton.innerHTML = 'carregando...'
+            setTimeout( () => {
+                localStorage.setItem('user', 'loggedIn');
+                setIsLoggedIn(true)
+                navigate('/dashboard')
+            }, 1000)
             
         }else{
-            erro.style.display = 'block'
+            loginButton.innerHTML = 'carregando...'
+            setTimeout(() => {
+                erro.style.display = 'block'
+                loginButton.innerHTML = 'Login'    
+            }, 1000)
         }
     }
 
+
     return(
-        <div className="w-full h-screen flex ">
+        <div className="container-login w-full h-screen flex ">
             <div className="left-side-login w-1/2 h-screen bg-neutral-900 text-white">
                 <div className="w-13 h-13 rounded-2xl bg-neutral-600 flex items-center justify-center"> <FontAwesomeIcon className='text-2xl' icon={faBolt}/> </div>
 
@@ -99,19 +113,19 @@ export function Login() {
                     <span className='text-sm'>Usuário ou senha incorretos</span>
                 </div>
 
-                <div className='form-login w-full flex flex-col items-center gap-5'>
+                <form className='form-login w-full flex flex-col items-center gap-5'>
                     <div className='flex flex-col'>
                         <span className='text-sm font-bold'>Usuário</span>
-                        <input onChange={handleUser} type="text" name="user" placeholder='Admin' />
+                        <input onChange={handleUser} type="text" name="user" placeholder='admin' />
                     </div>
 
                     <div className='flex flex-col relative'>
                         <span className='text-sm font-bold'>Senha</span>
                         <input onChange={handlePassword} type={showPassword ? 'text' : 'password'} name="password" placeholder='admin123' id='password'/>
-                        <button onClick={handleVisiblePass} className="button-visible absolute top-8 right-5 cursor-pointer "> <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} /> </button>
+                        <div onClick={handleVisiblePass} className="button-visible absolute top-8 right-5 cursor-pointer "> <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} /> </div>
                     </div>
-                    <button onClick={makeLogin} className='button-submit-login bg-neutral-900 text-white'>Login</button>
-                </div>
+                    <button onClick={makeLogin} className='button-submit-login bg-neutral-900 text-white' id='login-button'>Login</button>
+                </form>
             </div>
         </div>
     )

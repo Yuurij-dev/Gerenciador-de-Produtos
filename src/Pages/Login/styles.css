@@ -78,3 +78,31 @@
     color: #ef4444;
     margin-bottom: 20px;
 }
+
+@media screen and (max-width: 890px) {
+    .container-login{
+        flex-direction: column;
+    }
+
+    .left-side-login{
+        width: 100%;
+        height: auto;
+    }
+    .right-side-login{
+        padding: 100px 30px;
+        width: 100%;
+        height: auto;
+    }
+
+    .footer-login{
+        margin-top: 100px;
+    }
+}
+
+@media screen and (max-width: 485px) {
+    .form-login input, .erro-login, .form-login .button-submit-login{
+        max-width: 300px;
+        min-width: 300px;
+    
+    }
+}
