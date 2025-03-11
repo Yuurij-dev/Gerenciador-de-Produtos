@@ -13,7 +13,7 @@ export function DashBoardSideBar() {
     };
 
     return (
-        <aside className="aside w-64 h-screen bg-white shadow-md flex flex-col justify-between p-4">
+        <aside className="aside w-full max-w-64 h-screen bg-white shadow-md flex flex-col justify-between p-4">
             <div>
                 <h2 className="text-2xl ">Dashboard</h2>
 

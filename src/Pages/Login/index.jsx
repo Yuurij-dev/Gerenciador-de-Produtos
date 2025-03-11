@@ -124,7 +124,7 @@ export function Login() {
                         <input onChange={handlePassword} type={showPassword ? 'text' : 'password'} name="password" placeholder='admin123' id='password'/>
                         <div onClick={handleVisiblePass} className="button-visible absolute top-8 right-5 cursor-pointer "> <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} /> </div>
                     </div>
-                    <button onClick={makeLogin} className='button-submit-login bg-neutral-900 text-white' id='login-button'>Login</button>
+                    <button onClick={makeLogin} className='button-submit-login bg-neutral-800 text-white' id='login-button'>Login</button>
                 </form>
             </div>
         </div>
