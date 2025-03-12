@@ -35,7 +35,7 @@ export default function Produtos() {
                 <DashboardHeader/>
                 <div className="produtos-container">
                     <header className="flex items-center justify-between">
-                      <h1 className="text-3xl font-bold">Produtos</h1>
+                      <h1 className="text-3xl text-neutral-800  font-bold">Produtos</h1>
                       <button className="button-produtos-header bg-neutral-800 rounded text-white text-sm flex items-center gap-3.5 "><FontAwesomeIcon icon={faPlus} className="text-sm" /> Novo Produto</button>
                     </header>
 
