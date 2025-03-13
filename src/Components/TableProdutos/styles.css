@@ -11,7 +11,7 @@
     padding: 5px;
 }
 
-.remove-confirme{
+.remove-confirme, .add-product-box{
     position: fixed;
     top: 50%;
     left: 50%;
@@ -23,7 +23,10 @@
     background-color: #fff;
     border-radius: 7px;
 }
-.remove-confirme h1{
+.add-product-box{
+    width: 450px;
+}
+.remove-confirme h1, .add-product-box h1{
     margin-bottom: 10px;
     font-size: 20px;
     font-weight: bold;
@@ -31,12 +34,13 @@
 .remove-confirme span{
     color: #52525b;
 }
-.remove-confirme button{
+
+.remove-confirme button, .add-product-box button{
     cursor: pointer;
     border-radius: 7px;
     padding: 10px 20px;
 }
-.remove-confirme button:hover{
+.remove-confirme button:hover, .add-product-box button:hover{
     filter: brightness(0.9);
 }
 .modal-overlay {
@@ -49,6 +53,11 @@
     z-index: 1000;
 }
 
-#modal-overlay, #box-remove-confirme{
-    display: none;
+.add-product-box input{
+    padding: 8px 0 8px 10px;
+    border-radius: 7px;
+    border: 1px solid #e2e2e2;
+}
+.add-product-box .buttons-add-product-box{
+    margin-top: 20px;
 }
