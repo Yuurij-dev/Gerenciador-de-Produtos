@@ -53,7 +53,7 @@ export function Login() {
             erro.style.display = 'none'
 
             setIsLoading(true)
-            loginButton.innerHTML = 'carregando...'
+            loginButton.innerHTML = 'Entrando...'
             setTimeout( () => {
                 localStorage.setItem('user', 'loggedIn');
                 setIsLoggedIn(true)
@@ -61,7 +61,7 @@ export function Login() {
             }, 1000)
             
         }else{
-            loginButton.innerHTML = 'carregando...'
+            loginButton.innerHTML = 'Entrando...'
             setTimeout(() => {
                 erro.style.display = 'block'
                 loginButton.innerHTML = 'Login'    
