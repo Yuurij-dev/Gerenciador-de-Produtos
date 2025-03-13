@@ -86,12 +86,11 @@ const TableProdutos = () => {
     setEstoqueProduct(estoqueProduct)
   }
 
-  // Função para criar Produto
   const addProduct = () => {
     const newProduto = {
       id: uuidv4(),
       nome: nameProductUse.charAt(0).toUpperCase() + nameProductUse.slice(1).toLocaleLowerCase(),
-      preco: priceProductUse,
+      preco: 'R$ ' + priceProductUse,
       estoque: estoqueProductUse,
       nivelEstoque: estoqueProductUse >= 500 ? "Alto" : estoqueProductUse > 200 ? "Medio" : "Baixo",
       dataCriacao: new Date().toLocaleDateString()
