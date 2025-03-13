@@ -41,7 +41,7 @@ export function Login() {
         setPassLogin(password)
     }
 
-    function makeLogin(event) {
+    const makeLogin = (event) => {
         event.preventDefault();
         const erro = document.getElementById('erro')
         const loginButton = document.getElementById('login-button')
@@ -54,6 +54,7 @@ export function Login() {
 
             setIsLoading(true)
             loginButton.innerHTML = 'Entrando...'
+            
             setTimeout( () => {
                 localStorage.setItem('user', 'loggedIn');
                 setIsLoggedIn(true)

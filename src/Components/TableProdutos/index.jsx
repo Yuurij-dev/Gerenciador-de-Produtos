@@ -61,6 +61,9 @@ const TableProdutos = () => {
   // Função para fechar o modal add produto
   const closeAddProduct = () => {
     setModalAddProduto(null)
+    setNameProduct('')
+    setEstoqueProduct('')
+    setPriceProduct('')
   }
 
   // Função para pegar o valores dos inputs de adiconar produto
@@ -87,15 +90,35 @@ const TableProdutos = () => {
   const addProduct = () => {
     const newProduto = {
       id: uuidv4(),
-      nome: nameProductUse,
+      nome: nameProductUse.charAt(0).toUpperCase() + nameProductUse.slice(1).toLocaleLowerCase(),
       preco: priceProductUse,
       estoque: estoqueProductUse,
       nivelEstoque: estoqueProductUse >= 500 ? "Alto" : estoqueProductUse > 200 ? "Medio" : "Baixo",
       dataCriacao: new Date().toLocaleDateString()
     }
 
-    setProdutos((prevProduto) =>  [...prevProduto, newProduto])
-    closeAddProduct()
+    const erroAddProcutCampos = document.getElementById('erro-create-product-campos')
+    const erroAddProcutExiste = document.getElementById('erro-create-product-existe')
+
+    const checkUserExist = produtos.find(produto => produto.nome === newProduto.nome)
+
+    if(checkUserExist){
+      erroAddProcutExiste.style.display = 'block'
+      erroAddProcutCampos.style.display = 'none'
+      
+    }else{
+      if(newProduto.nome != '' && newProduto.preco != '' && newProduto.estoque != '') {
+        setProdutos((prevProduto) =>  [...prevProduto, newProduto])
+        
+        closeAddProduct()
+  
+      }else{
+        erroAddProcutCampos.style.display = 'block'
+        erroAddProcutExiste.style.display = 'none'
+
+      }
+    }
+
   }
   return (
     <div className="container-table">
@@ -166,12 +189,22 @@ const TableProdutos = () => {
 
       {modalAddProduto && (
         <div className="modal-overlay">
-          <div className="add-product-box">
+          <div className="add-product-box">        
             <h1>Adicionar Produto</h1>
+
+            {/* Erros box */}
+            <div className='erro-create-poduto-campos' id='erro-create-product-campos'>
+                <span className='text-sm'>Preencha todos os campos!</span>
+            </div>
+
+            <div className='erro-create-poduto-existente' id='erro-create-product-existe'>
+                <span className='text-sm'>Esse Produto já existe!</span>
+            </div>
+
             <div className="flex flex-col gap-5">
               <div className="flex flex-col gap-2">
                 <span className="text-zinc-800 text-sm font-bold">Nome</span>
-                <input onChange={handleNameProduct} type="text" placeholder="Meu Produto" />
+                <input onChange={handleNameProduct} type="text" placeholder="Meu Produto"/>
               </div>
 
               <div className="flex flex-col gap-2">
