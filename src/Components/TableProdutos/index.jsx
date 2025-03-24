@@ -9,6 +9,11 @@ import {
   TableRow,
   Paper,
   IconButton,
+  Card,
+  CardContent,
+  Typography,
+  Chip,
+  useMediaQuery 
 } from "@mui/material";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -16,23 +21,21 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 import { v4 as uuidv4 } from "uuid";
 
-import { Edit, Delete } from "@mui/icons-material";
+import { Edit, Delete, AlternateEmail } from "@mui/icons-material";
 
 
 const TableProdutos = () => {
 
   // Estado que controla a exebição do modal
   const [produtos, setProdutos] = useState([
-    { id: 1, nome: "Carrinho", preco: "R$ 50,00", estoque: 500, nivelEstoque: "Alto", dataCriacao: "27/02/2025" },
-    { id: 2, nome: "Vassoura", preco: "R$ 2,00", estoque: 122, nivelEstoque: "Medio", dataCriacao: "25/02/2025" },
-    { id: 3, nome: "Caneta", preco: "R$ 12,00", estoque: 345, nivelEstoque: "Medio", dataCriacao: "12/11/2024" },
-    { id: 4, nome: "Balinha", preco: "R$ 1,00", estoque: 10, nivelEstoque: "Baixo", dataCriacao: "12/11/2024" },
+    { id: 1, nome: "Carrinho", preco: 'R$ '+12, estoque: 500, nivelEstoque: "Alto", dataCriacao: "27/02/2025" },
   ]);
 
+  
   // Estado para controlar a exibição do modal
   const [produtoSelecionado, setProdutoSelecionado] = useState(null);
 
-  // Função para exibir o modal
+  // Função para exibir o modal de remove
   const showRemoveConfirme = (produto) => {
     setProdutoSelecionado(produto);
   };
@@ -119,12 +122,47 @@ const TableProdutos = () => {
     }
 
   }
+
+  const [editProdutoSelecionado, setEditProdutoSelecionado] = useState(null)
+
+  // Função para exibir o modal de edit
+  const showEditModal = (produto) => {
+    setEditProdutoSelecionado(produto)
+  }
+
+  const closeEditModal = (e) => {
+    setEditProdutoSelecionado(null)
+  }
+
+  // Edit Handles
+  const [nameProductUseEdit, setNameProductEdit] = useState('')
+  const [priceProductUseEdit, setPriceProductEdit] = useState('')
+  const [estoqueProductUseEdit, setEstoqueProductEdit] = useState('')
+
+  const handleNameProductEdit = (e) => {
+    const nameProductEdit = e.target.value
+    setNameProductEdit(nameProductEdit)
+  }
+
+  const handlePriceProductEdit = (e) => {
+    const priceProductEdit = e.target.value
+    setPriceProductEdit(priceProductEdit)
+  }
+
+  const handleEstoqueProductEdit = (e) => {
+    const productProductEdit = e.target.value
+    setEstoqueProductEdit(productProductEdit)
+  }
+
+  
   return (
     <div className="container-table">
       <header className="flex items-center justify-between">
         <h1 className="text-3xl text-neutral-800  font-bold">Produtos</h1>
         <button onClick={showAddProduct} className="button-produtos-header bg-neutral-800 rounded text-white text-sm flex items-center gap-3.5 cursor-pointer hover:opacity-70"><FontAwesomeIcon icon={faPlus} className="text-sm" /> Novo Produto</button>
       </header>
+
+      
       <TableContainer className="table-container rounded-lg" component={Paper}>
         <Table>
           <TableHead>
@@ -157,7 +195,7 @@ const TableProdutos = () => {
                 <TableCell>{produto.dataCriacao}</TableCell>
                 <TableCell align="right">
                   <IconButton color="inherit">
-                    <Edit />
+                    <Edit onClick={() => showEditModal(produto)}/>
                   </IconButton>
                   <IconButton color="error" onClick={() => showRemoveConfirme(produto)}>
                     <Delete />
@@ -168,6 +206,7 @@ const TableProdutos = () => {
           </TableBody>
         </Table>
       </TableContainer>
+      
 
       {/* Modal de confirmação de remoção */}
       {produtoSelecionado && (
@@ -181,6 +220,48 @@ const TableProdutos = () => {
             <div className="flex justify-end gap-2 mt-4">
               <button className="bg-white text-zinc-600 text-sm px-4 py-2 rounded" onClick={closeRemoveConfirme}>Cancelar</button>
               <button className="bg-red-500 text-white text-sm px-4 py-2 rounded" onClick={handleRemove}>Confirmar</button>
+            </div>
+          </div>
+        </div>
+      )}
+
+
+      {editProdutoSelecionado && (
+        <div className="modal-overlay">
+          <div className="add-product-box">        
+            <h1>Editar Produto</h1>
+
+            {/* Erros box */}
+            <div className='erro-create-poduto-campos' id='erro-create-product-campos-edit'>
+                <span className='text-sm'>Preencha todos os campos corretamente!</span>
+            </div>
+
+
+            <div className="flex flex-col gap-5">
+              <div className="flex flex-col gap-2">
+                <span className="text-zinc-800 text-sm font-bold">Nome</span>
+                <input onChange={(e) => editProdutoSelecionado.nome = e.target.value} type="text" defaultValue={editProdutoSelecionado.nome} placeholder="Meu Produto"/>
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <span className="text-zinc-800 text-sm font-bold">Preço</span>
+                <input onChange={(e) => editProdutoSelecionado.preco = "R$ " + e.target.value} type="number" defaultValue={editProdutoSelecionado.preco} placeholder="R$ 0,00" />
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <span className="text-zinc-800 text-sm font-bold">Estoque</span>
+                <input onChange={(e) => editProdutoSelecionado.estoque = e.target.value} type="number" defaultValue={editProdutoSelecionado.estoque} placeholder="0" />
+              </div>
+            </div>
+            
+            <div className="buttons-add-product-box flex justify-end gap-2 mt-4">
+              <button className="bg-white border  text-zinc-600 text-sm px-4 py-2 rounded" onClick={closeEditModal}>Cancelar</button>
+              <button className="bg-zinc-800 text-white text-sm px-4 py-2 rounded" onClick={() => {
+                setProdutos(produtos.map(produto => 
+                  produto.id === editProdutoSelecionado.id ? { ...produto, ...editProdutoSelecionado } : produto
+                ));
+                closeEditModal();
+              }}>Confirmar</button>
             </div>
           </div>
         </div>
