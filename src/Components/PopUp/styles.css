@@ -1,0 +1,10 @@
+/* poops */
+.poops{
+
+    z-index: 1000;
+    max-width: 300px;
+    padding: 20px;
+    border: 1px solid oklch(0.627 0.194 149.214);
+    opacity: 1;
+    transition: top 1s ease-in-out, opacity 0.5s ease-in-out;
+}

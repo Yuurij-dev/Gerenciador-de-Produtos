@@ -24,11 +24,23 @@ import { v4 as uuidv4 } from "uuid";
 import { Edit, Delete, AlternateEmail } from "@mui/icons-material";
 
 
+// Coisas a adcionar :
+
+  /* Features: 
+    .Validação dos produtos
+    .Confirmar com enter
+    .media querys
+    .adicionar um pop up
+  */
+
 const TableProdutos = () => {
 
   // Estado que controla a exebição do modal
   const [produtos, setProdutos] = useState([
     { id: 1, nome: "Carrinho", preco: 'R$ '+12, estoque: 500, nivelEstoque: "Alto", dataCriacao: "27/02/2025" },
+    { id: 2, nome: "Estojo", preco: 'R$ '+12, estoque: 500, nivelEstoque: "Alto", dataCriacao: "27/02/2025" },
+    { id: 3, nome: "Peixe", preco: 'R$ '+12, estoque: 500, nivelEstoque: "Alto", dataCriacao: "27/02/2025" },
+    { id: 4, nome: "Lapis", preco: 'R$ '+12, estoque: 500, nivelEstoque: "Alto", dataCriacao: "27/02/2025" },
   ]);
 
   
@@ -89,13 +101,15 @@ const TableProdutos = () => {
     setEstoqueProduct(estoqueProduct)
   }
 
-  const addProduct = () => {
+  const addProduct = (e) => {
+    e.preventDefault();
+
     const newProduto = {
       id: uuidv4(),
       nome: nameProductUse.charAt(0).toUpperCase() + nameProductUse.slice(1).toLocaleLowerCase(),
       preco: 'R$ ' + priceProductUse,
       estoque: estoqueProductUse,
-      nivelEstoque: estoqueProductUse >= 500 ? "Alto" : estoqueProductUse > 200 ? "Medio" : "Baixo",
+      nivelEstoque: estoqueProductUse >= 500 ? "Alto" : estoqueProductUse > 100 ? "Medio" : "Baixo",
       dataCriacao: new Date().toLocaleDateString()
     }
 
@@ -105,58 +119,101 @@ const TableProdutos = () => {
     const checkUserExist = produtos.find(produto => produto.nome === newProduto.nome)
 
     if(checkUserExist){
+      console.log(newProduto.nome)
       erroAddProcutExiste.style.display = 'block'
       erroAddProcutCampos.style.display = 'none'
       
-    }else{
-      if(newProduto.nome != '' && newProduto.preco != '' && newProduto.estoque != '') {
+    }else if(newProduto.nome !== '' && newProduto.preco !== '' && newProduto.estoque !=='') {
         setProdutos((prevProduto) =>  [...prevProduto, newProduto])
         
-        closeAddProduct()
+        return closeAddProduct()
   
       }else{
         erroAddProcutCampos.style.display = 'block'
         erroAddProcutExiste.style.display = 'none'
 
       }
-    }
+    
 
+  }
+
+  // Editar produtos
+
+  // Função para pegar o valores dos inputs de adiconar produto
+  const [nameProductEdit, setNameProductEdit] = useState('')
+  const [priceProductEdit, setPriceProductEdit] = useState('')
+  const [estoqueProductEdit, setEstoqueProductEdit] = useState('')
+
+  const handleNameProductEdit = (e) => {
+    let nameProduct = e.target.value
+    setNameProductEdit(nameProduct)
+  }
+
+  const handlePriceProductEdit = (e) => {
+    let priceProduct = e.target.value 
+    setPriceProductEdit(priceProduct)
+  }
+
+  const handleEstoqueProductEdit = (e) => {
+    let estoqueProduct = e.target.value 
+    setEstoqueProductEdit(estoqueProduct)
   }
 
   const [editProdutoSelecionado, setEditProdutoSelecionado] = useState(null)
 
   // Função para exibir o modal de edit
   const showEditModal = (produto) => {
-    setEditProdutoSelecionado(produto)
-  }
+      setEditProdutoSelecionado(produto);
+  };
 
   const closeEditModal = (e) => {
     setEditProdutoSelecionado(null)
   }
 
-  // Edit Handles
-  const [nameProductUseEdit, setNameProductEdit] = useState('')
-  const [priceProductUseEdit, setPriceProductEdit] = useState('')
-  const [estoqueProductUseEdit, setEstoqueProductEdit] = useState('')
-
-  const handleNameProductEdit = (e) => {
-    const nameProductEdit = e.target.value
-    setNameProductEdit(nameProductEdit)
-  }
-
-  const handlePriceProductEdit = (e) => {
-    const priceProductEdit = e.target.value
-    setPriceProductEdit(priceProductEdit)
-  }
-
-  const handleEstoqueProductEdit = (e) => {
-    const productProductEdit = e.target.value
-    setEstoqueProductEdit(productProductEdit)
-  }
-
+  // Função para editar produtos
+  const editProduct = (e) => {
+    e.preventDefault();
   
+    if (!editProdutoSelecionado) {
+      console.error("Nenhum produto selecionado para edição.");
+      return;
+    }
+  
+    const newProduto = {
+      id: editProdutoSelecionado.id,
+      nome: nameProductEdit.charAt(0).toUpperCase() + nameProductEdit.slice(1).toLocaleLowerCase(),
+      preco: 'R$ ' + priceProductEdit,
+      estoque: estoqueProductEdit,
+      nivelEstoque: estoqueProductEdit >= 500 ? "Alto" : estoqueProductEdit > 100 ? "Medio" : "Baixo",
+      dataCriacao: editProdutoSelecionado.dataCriacao
+    };
+  
+    const erroAddProcutCamposEdit = document.getElementById('erro-create-product-campos-edit');
+    const erroAddProcutExisteEdit = document.getElementById('erro-create-product-existe-edit');
+  
+    // Verifica se o nome já existe em outro produto
+    const checkUserExist = produtos.find(produto => produto.nome === newProduto.nome && produto.id !== editProdutoSelecionado.id);
+  
+    if (newProduto.nome === '' || newProduto.preco === '' || newProduto.estoque === '') {
+      erroAddProcutCamposEdit.style.display = 'block';
+      erroAddProcutExisteEdit.style.display = 'none';
+    } else if (checkUserExist) {
+      erroAddProcutCamposEdit.style.display = 'none';
+      erroAddProcutExisteEdit.style.display = 'block';
+    } else {
+      setProdutos(produtos.map(produto => 
+        produto.id === editProdutoSelecionado.id ? { ...produto, ...newProduto } : produto
+      ));
+      closeEditModal();
+    }
+  };
+  
+
   return (
+    
     <div className="container-table">
+
+      
       <header className="flex items-center justify-between">
         <h1 className="text-3xl text-neutral-800  font-bold">Produtos</h1>
         <button onClick={showAddProduct} className="button-produtos-header bg-neutral-800 rounded text-white text-sm flex items-center gap-3.5 cursor-pointer hover:opacity-70"><FontAwesomeIcon icon={faPlus} className="text-sm" /> Novo Produto</button>
@@ -227,7 +284,7 @@ const TableProdutos = () => {
 
 
       {editProdutoSelecionado && (
-        <div className="modal-overlay">
+        <form className="modal-overlay">
           <div className="add-product-box">        
             <h1>Editar Produto</h1>
 
@@ -235,40 +292,42 @@ const TableProdutos = () => {
             <div className='erro-create-poduto-campos' id='erro-create-product-campos-edit'>
                 <span className='text-sm'>Preencha todos os campos corretamente!</span>
             </div>
+            <div className='erro-create-poduto-existente' id='erro-create-product-existe-edit'>
+                <span className='text-sm'>Esse Produto já existe!</span>
+            </div>
 
 
             <div className="flex flex-col gap-5">
               <div className="flex flex-col gap-2">
                 <span className="text-zinc-800 text-sm font-bold">Nome</span>
-                <input onChange={(e) => editProdutoSelecionado.nome = e.target.value} type="text" defaultValue={editProdutoSelecionado.nome} placeholder="Meu Produto"/>
+                <input onChange={handleNameProductEdit} type="text" placeholder={editProdutoSelecionado.nome}/>
               </div>
 
               <div className="flex flex-col gap-2">
                 <span className="text-zinc-800 text-sm font-bold">Preço</span>
-                <input onChange={(e) => editProdutoSelecionado.preco = "R$ " + e.target.value} type="number" defaultValue={editProdutoSelecionado.preco} placeholder="R$ 0,00" />
+                <input onChange={handlePriceProductEdit} placeholder="R$ 0,00" />
               </div>
 
               <div className="flex flex-col gap-2">
                 <span className="text-zinc-800 text-sm font-bold">Estoque</span>
-                <input onChange={(e) => editProdutoSelecionado.estoque = e.target.value} type="number" defaultValue={editProdutoSelecionado.estoque} placeholder="0" />
+                <input onChange={handleEstoqueProductEdit} type="number" placeholder={editProdutoSelecionado.estoque}/>
               </div>
             </div>
             
             <div className="buttons-add-product-box flex justify-end gap-2 mt-4">
-              <button className="bg-white border  text-zinc-600 text-sm px-4 py-2 rounded" onClick={closeEditModal}>Cancelar</button>
-              <button className="bg-zinc-800 text-white text-sm px-4 py-2 rounded" onClick={() => {
-                setProdutos(produtos.map(produto => 
-                  produto.id === editProdutoSelecionado.id ? { ...produto, ...editProdutoSelecionado } : produto
-                ));
-                closeEditModal();
-              }}>Confirmar</button>
+              <button className="bg-white border  text-zinc-600 text-sm px-4 py-2 rounded" type="button" onClick={closeEditModal}>Cancelar</button>
+              <button className="bg-zinc-800 text-white text-sm px-4 py-2 rounded" type="submit" onClick={editProduct}>Confirmar</button>
+              {/* // setProdutos(produtos.map(produto => 
+                //   produto.id === editProdutoSelecionado.id ? { ...produto, ...editProdutoSelecionado } : produto
+                // ));
+                // return closeEditModal(); */}
             </div>
           </div>
-        </div>
+        </form>
       )}
 
       {modalAddProduto && (
-        <div className="modal-overlay">
+        <form className="modal-overlay">
           <div className="add-product-box">        
             <h1>Adicionar Produto</h1>
 
@@ -299,11 +358,11 @@ const TableProdutos = () => {
             </div>
             
             <div className="buttons-add-product-box flex justify-end gap-2 mt-4">
-              <button className="bg-white border  text-zinc-600 text-sm px-4 py-2 rounded" onClick={closeAddProduct}>Cancelar</button>
-              <button className="bg-zinc-800 text-white text-sm px-4 py-2 rounded" onClick={addProduct}>Confirmar</button>
+              <button className="bg-white border  text-zinc-600 text-sm px-4 py-2 rounded" type="button" onClick={closeAddProduct}>Cancelar</button>
+              <button className="bg-zinc-800 text-white text-sm px-4 py-2 rounded" type="submit" onClick={addProduct}>Confirmar</button>
             </div>
           </div>
-        </div>
+        </form>
       )}
     </div>
   );
