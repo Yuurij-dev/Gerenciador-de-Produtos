@@ -31,7 +31,7 @@ Sistema de controle e análise de produtos com foco em responsividade, visualiza
 git clone https://github.com/Yuurij-dev/Gerenciador-de-Produtos
 
 # Acesse o diretório
-cd seu-repo
+cd gestao_de_produto
 
 # Instale as dependências
 npm install
