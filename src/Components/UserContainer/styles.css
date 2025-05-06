@@ -1,0 +1,42 @@
+.container-user{
+    margin-top: 50px;
+    width: 100%;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.sem-usuario {
+    text-align: center;
+    margin-top: 40px;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .sem-usuario p {
+    color: #6b7280; /* cinza suave */
+    font-size: 16px;
+    margin-bottom: 16px;
+  }
+  
+  .btn-novo-usuario {
+    background-color: #f37869; /* preto suave */
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.2s ease;
+  }
+  
+  .btn-novo-usuario:hover {
+    background-color: #1f2937; /* tom mais claro no hover */
+  }
+  
+  .btn-novo-usuario span {
+    font-size: 18px;
+  }

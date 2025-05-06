@@ -73,22 +73,22 @@ export function Login() {
 
     return(
         <div className="container-login w-full h-screen flex ">
-            <div className="left-side-login w-1/2 h-screen bg-neutral-900 text-white">
-                <div className="w-13 h-13 rounded-2xl bg-neutral-600 flex items-center justify-center"> <FontAwesomeIcon className='text-2xl' icon={faBolt}/> </div>
+            <div className="left-side-login w-1/2 h-screen text-white">
+                <div className="logo-login w-13 h-13 rounded-2xl flex items-center justify-center"> <FontAwesomeIcon className='text-2xl' icon={faBolt}/> </div>
 
                 <div>
                     <h1 className='title-login text-4xl font-bold'>Bem-vindo!</h1>
-                    <span className='span-title-login text-md text-neutral-400'>Acesse o painel administrativo para gerenciar seus produtos e vendas.</span>
+                    <span className='span-title-login text-md'>Acesse o painel administrativo para gerenciar seus produtos e vendas.</span>
                 </div>
 
                 <div className='recursos-login'>
                     <h3 className=''>Recursos disponiveis:</h3>
-                    <div className='recursos-login-div flex items-center'><div className='w-7 h-7 bg-neutral-600 rounded-full flex items-center justify-center '><FontAwesomeIcon className='text-sm' icon={faCheck}/></div><span >Gestão completa de produtos</span></div>
-                    <div className='recursos-login-div flex items-center'><div className='w-7 h-7 bg-neutral-600 rounded-full flex items-center justify-center'><FontAwesomeIcon className='text-sm' icon={faCheck}/></div><span>Controle de estoque em tempo real</span></div>
-                    <div className='recursos-login-div flex items-center'><div className='w-7 h-7 bg-neutral-600 rounded-full flex items-center justify-center '><FontAwesomeIcon className='text-sm' icon={faCheck}/></div><span>Relatórios e análises avançadas</span></div>
+                    <div className='recursos-login-div flex items-center'><div className='w-7 h-7 rounded-full flex items-center justify-center '><FontAwesomeIcon className='text-sm' icon={faCheck}/></div><span >Gestão completa de produtos</span></div>
+                    <div className='recursos-login-div flex items-center'><div className='w-7 h-7 rounded-full flex items-center justify-center'><FontAwesomeIcon className='text-sm' icon={faCheck}/></div><span>Controle de estoque em tempo real</span></div>
+                    <div className='recursos-login-div flex items-center'><div className='w-7 h-7 rounded-full flex items-center justify-center '><FontAwesomeIcon className='text-sm' icon={faCheck}/></div><span>Relatórios e análises avançadas</span></div>
                 </div>
 
-                <div className='ajuda-box-login bg-neutral-600 rounded flex flex-col'>
+                <div className='ajuda-box-login rounded flex flex-col'>
                     <h3 className='font-bold'>Precisa de ajuda?</h3>
                     <span className='text-sm'>Entre em contato com nosso suporte:</span>
                     <span className='text-sm'>suporte@empresa.com</span>

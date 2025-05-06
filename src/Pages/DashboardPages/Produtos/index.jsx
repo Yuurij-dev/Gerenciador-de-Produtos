@@ -35,7 +35,6 @@ export default function Produtos() {
                 <DashboardHeader/>
                 <div className="produtos-container">
                     
-
                     <TableProdutos />
                 </div>
             </div>

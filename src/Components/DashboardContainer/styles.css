@@ -1,0 +1,60 @@
+.dashboard .title-config p{
+    font-size: 14px;
+    color: #7e7e7e;
+}
+.dashboard .title-config{
+    margin-bottom: 20px;
+}
+
+.vendas-hoje-box{
+    width: 100%;
+    max-width: 400px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+}
+.vendas-hoje-box span{
+    color: #7e7e7e;
+    font-size: 14px;
+}
+.vendas-hoje-box h3{
+    font-size: #000;
+    font-weight: bold;
+    font-size: 20px;
+}
+.vendas-hoje-box p{
+    font-size: 14px;
+    color: #00c26d;
+}
+
+
+.grafico{
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+}
+.container-graficos{
+    margin-top: 20px;
+}
+.box-graficos{
+    padding: 20px;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 8px;
+}
+.box-graficos h1{
+    color: #000;
+    font-weight: 500;
+    font-size: 16px;
+}
+.box-graficos span{
+    color: #7e7e7e;
+    font-size: 13px;
+}
+
+@media screen and (max-width: 768px) {
+    .container-graficos{
+        flex-direction: column;
+    }
+}

@@ -1,12 +1,14 @@
-import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
-import { DashBoardSideBar } from "../../Components/DashBoardSideBar";
-import DashboardHeader from "../../Components/DashBoardHeader";
+import DashboardHeader from "../../../Components/DashBoardHeader";
+import { DashBoardSideBar } from "../../../Components/DashBoardSideBar";
 
-import DashboardContainer from "../../Components/DashboardContainer";
+import UserContainer from "../../../Components/UserContainer";
 
-export default function Dashboard() {
+import './styles.css'
+
+export default function UsuariosPage() {
     const navigate = useNavigate()
 
     const [isLoggedIn, setIsLoggedIn] = useState(false)
@@ -22,19 +24,16 @@ export default function Dashboard() {
         }
       }, [navigate]);
 
-
-    return(
+      return(
         <div className="w-full flex">
-            <DashBoardSideBar/>
+            <DashBoardSideBar />
 
             <div className="w-full">
                 <DashboardHeader/>
-                <div className="produtos-container">
-                    
-                    <DashboardContainer/>
+                <div className="dashboard-container">
+                    <UserContainer/>
                 </div>
             </div>
-
         </div>
-    )
+      )
 }

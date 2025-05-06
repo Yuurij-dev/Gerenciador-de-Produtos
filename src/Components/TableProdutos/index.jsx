@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./styles.css";
 import {
+  Box,
   Table,
   TableBody,
   TableCell,
@@ -13,7 +14,8 @@ import {
   CardContent,
   Typography,
   Chip,
-  useMediaQuery 
+  useMediaQuery,
+  useTheme
 } from "@mui/material";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -34,6 +36,9 @@ import { Edit, Delete, AlternateEmail } from "@mui/icons-material";
   */
 
 const TableProdutos = () => {
+
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   // Estado que controla a exebição do modal
   const [produtos, setProdutos] = useState([
@@ -216,14 +221,14 @@ const TableProdutos = () => {
       
       <header className="flex items-center justify-between">
         <h1 className="text-3xl text-neutral-800  font-bold">Produtos</h1>
-        <button onClick={showAddProduct} className="button-produtos-header bg-neutral-800 rounded text-white text-sm flex items-center gap-3.5 cursor-pointer hover:opacity-70"><FontAwesomeIcon icon={faPlus} className="text-sm" /> Novo Produto</button>
+        <button onClick={showAddProduct} className="button-produtos-header rounded text-white text-sm flex items-center gap-3.5 cursor-pointer"><FontAwesomeIcon icon={faPlus} className="text-sm" /> Novo Produto</button>
       </header>
 
       
       <TableContainer className="table-container rounded-lg" component={Paper}>
         <Table>
           <TableHead>
-            <TableRow>
+            <TableRow >
               <TableCell><span className="title-table font-bold">Nome</span></TableCell>
               <TableCell><span className="title-table font-bold">Preço</span></TableCell>
               <TableCell><span className="title-table font-bold">Estoque</span></TableCell>
@@ -263,7 +268,60 @@ const TableProdutos = () => {
           </TableBody>
         </Table>
       </TableContainer>
+
+      {/* Mobile tabela */}
       
+      <Box className="table-container-mobile" flexDirection="column" gap={2}>
+      {produtos.map((produto) => (
+        <Paper
+          key={produto.id}
+          elevation={1}
+          className="rounded-lg"
+          sx={{
+            p: 2,
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "flex-start",
+          }}
+        >
+          {/* Informações do Produto */}
+          <Box display="flex" flexDirection="column" gap={1}>
+            <Typography className="font-bold">{produto.nome}</Typography>
+            <Typography>{produto.preco}</Typography>
+
+            <Box display="flex" alignItems="center" gap={1} flexWrap="wrap">
+              <Typography fontWeight={500}>Estoque:</Typography>
+              <Typography color="text.secondary">{produto.estoque}</Typography>
+
+              <span
+                className={`span-nivel-estoque px-2 py-1 rounded-full text-xs font-medium 
+                  ${produto.nivelEstoque === "Alto" ? "bg-green-100 text-green-800" : ""}
+                  ${produto.nivelEstoque === "Medio" ? "bg-orange-100 text-orange-800" : ""}
+                  ${produto.nivelEstoque === "Baixo" ? "bg-red-100 text-red-800" : ""}
+                  ${!["Alto", "Medio", "Baixo"].includes(produto.nivelEstoque) ? "bg-gray-500 text-white" : ""}
+                `}
+              >
+                {produto.nivelEstoque}
+              </span>
+            </Box>
+
+            <Typography color="text.secondary" fontSize={14}>
+              Criado em: {produto.dataCriacao}
+            </Typography>
+          </Box>
+
+          {/* Botões de Ação */}
+          <Box display="flex" gap={1}>
+            <IconButton color="inherit" onClick={() => showEditModal(produto)}>
+              <Edit />
+            </IconButton>
+            <IconButton color="error" onClick={() => showRemoveConfirme(produto)}>
+              <Delete />
+            </IconButton>
+          </Box>
+        </Paper>
+      ))}
+    </Box>
 
       {/* Modal de confirmação de remoção */}
       {produtoSelecionado && (

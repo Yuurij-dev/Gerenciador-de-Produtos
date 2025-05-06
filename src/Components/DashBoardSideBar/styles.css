@@ -1,3 +1,12 @@
+.dashboardSideBar{
+    z-index: 999;
+    height: 100vh;
+
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: #1a222b;
+    color: #fff;
+}
 .aside{
     padding: 30px;
 }
@@ -10,11 +19,29 @@
     display: flex;
     align-items: center;
 }
+.nav-sidebar ul li:hover{
+    background-color: #2e3642;
+}
 .icon-li{
+    color: #f37869;
     margin-right: 10px;
     font-size: 20px;
 }
 
 .button-sidebar{
+    color: #fff;
     padding: 10px;
+    background-color: #f37869;
+}
+.button-sidebar:hover{
+    background-color: #1f2937;
+}
+.button-sidebar .icon-button{
+    font-size: 20px;
+}
+@media screen and (max-width: 1004px){
+    .dashboardSideBar{
+        position: absolute;
+        left: -300px;
+    }
 }

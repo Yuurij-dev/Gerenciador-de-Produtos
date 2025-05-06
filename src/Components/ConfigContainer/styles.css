@@ -1,0 +1,243 @@
+.config .title-config p {
+    color: #7e7e7e;
+    font-size: 14px;
+}
+
+.container-config{
+    margin-top: 20px;
+    width: 100%;
+
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 1fr 1fr;
+}
+.box-config{
+    width: 100%;
+
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #e4e4e7;
+    border-radius: 8px;
+
+}
+.box-config.geral-config h2{
+    margin-bottom: 70px;
+}
+.box-config h2 {
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #202124;
+  }
+  
+  .box-config div {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+  }
+  
+  .box-config span {
+    margin-bottom: 6px;
+    font-size: 14px;
+    color: #000;
+    font-weight: bold;
+  }
+  .box-config .red-span{
+    color: red;
+  }
+  
+  .box-config input {
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border 0.2s ease;
+  }
+  
+  .box-config input:focus {
+    border-color: #f37869;
+    outline: none;
+  }
+
+  /* notificacao */
+
+  .box-config.notificacao {
+    background-color: #fff;
+    padding: 24px;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    max-width: 600px;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  .box-config.notificacao h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #202124;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .box-config.notificacao  > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 0;
+    border-top: 1px solid #f0f0f0;
+  }
+  
+  .box-config.notificacao  > div:first-of-type {
+    border-top: none;
+  }
+  
+  .box-config.notificacao  h3 {
+    font-size: 15px;
+    color: #202124;
+    margin: 0;
+  }
+  
+  .box-config.notificacao  p {
+    font-size: 13px;
+    color: #5f6368;
+    margin: 4px 0 0;
+  }
+
+  /* Switch */
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 42px;
+    height: 30px;
+  }
+  
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 34px;
+    box-shadow: 0 0 0 2px transparent;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 2px;
+    top: 2px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+  }
+  
+  input:checked + .slider {
+    background-color: #f37869; /* azul vibrante */
+    box-shadow: 0 0 0 4px rgba(243, 120, 105, 0.3); /* borda azul clara */
+  }
+  
+  input:checked + .slider:before {
+    transform: translateX(18px);
+  }
+
+  /* backup config */
+
+  .box-config.backup-config{
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+    max-width: 600px;
+  }
+  
+  .box-config.backup-config h3 {
+    font-size: 18px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  
+  .btn-backup {
+    background-color: #f37869; /* azul */
+    color: white;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .btn-backup:hover {
+    background-color: #1f2937;
+  }
+  
+  .last-backup{
+    font-size: 14px;
+    color: #6b7280;
+    margin-top: 12px;
+  }
+
+  /* Button group */
+
+  .btn-group {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+  }
+  
+  .btn-cancelar {
+    background-color: #fff;
+    color: #111827;
+    border: 1px solid #d1d5db;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .btn-cancelar:hover {
+    background-color: #f9fafb;
+  }
+  
+  .btn-salvar {
+    background-color: #f37869;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .btn-salvar:hover {
+    background-color: #1f2937;
+  }
+
+  @media screen and (max-width: 768px) {
+    .container-config{
+        grid-template-columns: 1fr;
+    }
+  }
+
+  @media screen and (max-width: 639px) {
+    .btn-group {
+        display: flex;
+        justify-content: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+  }
