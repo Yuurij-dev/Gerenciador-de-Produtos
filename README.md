@@ -6,7 +6,7 @@ Sistema de controle e análise de produtos com foco em responsividade, visualiza
 
 ### 💻 Versão Desktop e 📱 Versão Mobile
 
-(./src/AssetsReadme/img-desktop-mobile.png)
+![Dashboard Desktop e Mobile](./src/AssetsReadme/img-desktop-mobile.png)
 
 ## 🚀 Tecnologias Utilizadas
 
