@@ -42,10 +42,10 @@ const TableProdutos = () => {
 
   // Estado que controla a exebição do modal
   const [produtos, setProdutos] = useState([
-    { id: 1, nome: "Carrinho", preco: 'R$ '+12, estoque: 500, nivelEstoque: "Alto", dataCriacao: "27/02/2025" },
-    { id: 2, nome: "Estojo", preco: 'R$ '+12, estoque: 500, nivelEstoque: "Alto", dataCriacao: "27/02/2025" },
-    { id: 3, nome: "Peixe", preco: 'R$ '+12, estoque: 500, nivelEstoque: "Alto", dataCriacao: "27/02/2025" },
-    { id: 4, nome: "Lapis", preco: 'R$ '+12, estoque: 500, nivelEstoque: "Alto", dataCriacao: "27/02/2025" },
+    { id: 1, nome: "Carrinho", preco: 'R$ '+12, estoque: 100, nivelEstoque: "Baixo", dataCriacao: "27/02/2025" },
+    { id: 2, nome: "Estojo", preco: 'R$ '+12, estoque: 300, nivelEstoque: "Médio", dataCriacao: "27/02/2025" },
+    { id: 3, nome: "Peixe", preco: 'R$ '+12, estoque: 252, nivelEstoque: "Médio", dataCriacao: "27/02/2025" },
+    { id: 4, nome: "Lapis", preco: 'R$ '+12, estoque: 620, nivelEstoque: "Alto", dataCriacao: "27/02/2025" },
   ]);
 
   
@@ -248,7 +248,7 @@ const TableProdutos = () => {
                       ${produto.nivelEstoque === "Alto" ? "bg-green-100 text-green-800" : ""}
                       ${produto.nivelEstoque === "Medio" ? "bg-orange-100 text-orange-800" : ""}
                       ${produto.nivelEstoque === "Baixo" ? "bg-red-100 text-red-800" : ""}
-                      ${produto.nivelEstoque !== "Alto" && produto.nivelEstoque !== "Medio" ? "bg-gray-500" : ""}
+                      ${!["Alto", "Medio", "Baixo"].includes(produto.nivelEstoque) ? "bg-gray-500 text-white" : ""}
                     `}
                   >
                     {produto.nivelEstoque}
