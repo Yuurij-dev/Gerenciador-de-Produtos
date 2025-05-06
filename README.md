@@ -4,13 +4,9 @@ Sistema de controle e análise de produtos com foco em responsividade, visualiza
 
 ## 📸 Demonstração
 
-### 💻 Versão Desktop
+### 💻 Versão Desktop e 📱 Versão Mobile
 
-![Dashboard Desktop](./caminho/da/imagem_desktop.png)
-
-### 📱 Versão Mobile
-
-![Dashboard Mobile](./caminho/da/imagem_mobile.png)
+(./src/AssetsReadme/img-desktop-mobile.png)
 
 ## 🚀 Tecnologias Utilizadas
 
@@ -18,7 +14,7 @@ Sistema de controle e análise de produtos com foco em responsividade, visualiza
 - [Vite](https://vitejs.dev/)
 - [Tailwind CSS](https://tailwindcss.com/)
 - [Chart.js ou Recharts](https://www.chartjs.org/)
-- [React Router DOM](https://reactrouter.com/en/main) _(se aplicável)_
+- [React Router DOM](https://reactrouter.com/en/main)
 
 ## 🔧 Funcionalidades
 
@@ -32,7 +28,7 @@ Sistema de controle e análise de produtos com foco em responsividade, visualiza
 
 ```bash
 # Clone o repositório
-git clone https://github.com/seu-usuario/seu-repo.git
+git clone https://github.com/Yuurij-dev/Gerenciador-de-Produtos
 
 # Acesse o diretório
 cd seu-repo
