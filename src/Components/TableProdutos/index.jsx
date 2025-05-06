@@ -42,10 +42,10 @@ const TableProdutos = () => {
 
   // Estado que controla a exebição do modal
   const [produtos, setProdutos] = useState([
-    { id: 1, nome: "Carrinho", preco: 'R$ '+12, estoque: 100, nivelEstoque: "Baixo", dataCriacao: "27/02/2025" },
-    { id: 2, nome: "Estojo", preco: 'R$ '+12, estoque: 300, nivelEstoque: "Médio", dataCriacao: "27/02/2025" },
-    { id: 3, nome: "Peixe", preco: 'R$ '+12, estoque: 252, nivelEstoque: "Médio", dataCriacao: "27/02/2025" },
-    { id: 4, nome: "Lapis", preco: 'R$ '+12, estoque: 620, nivelEstoque: "Alto", dataCriacao: "27/02/2025" },
+    // { id: 1, nome: "Carrinho", preco: 'R$ '+12, estoque: 100, nivelEstoque: "Baixo", dataCriacao: "27/02/2025" },
+    // { id: 2, nome: "Estojo", preco: 'R$ '+12, estoque: 300, nivelEstoque: "Médio", dataCriacao: "27/02/2025" },
+    // { id: 3, nome: "Peixe", preco: 'R$ '+12, estoque: 252, nivelEstoque: "Médio", dataCriacao: "27/02/2025" },
+    // { id: 4, nome: "Lapis", preco: 'R$ '+12, estoque: 620, nivelEstoque: "Alto", dataCriacao: "27/02/2025" },
   ]);
 
   
