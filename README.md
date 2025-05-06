@@ -1,12 +1,45 @@
-# Gerenciador de Produtos
+# 🛍️ Gerenciador de Produtos
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Sistema de controle e análise de produtos com foco em responsividade, visualização de dados e facilidade de uso. Desenvolvido com **React** e **Vite**.
 
-Currently, two official plugins are available:
+## 📸 Demonstração
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 💻 Versão Desktop
 
-## Expanding the ESLint configuration
+![Dashboard Desktop](./caminho/da/imagem_desktop.png)
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 📱 Versão Mobile
+
+![Dashboard Mobile](./caminho/da/imagem_mobile.png)
+
+## 🚀 Tecnologias Utilizadas
+
+- [React](https://reactjs.org/)
+- [Vite](https://vitejs.dev/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Chart.js ou Recharts](https://www.chartjs.org/)
+- [React Router DOM](https://reactrouter.com/en/main) _(se aplicável)_
+
+## 🔧 Funcionalidades
+
+- 📦 Cadastro e listagem de produtos
+- 📊 Visualização de vendas diárias e mensais
+- 📉 Indicador automático de nível de estoque (Baixo, Médio, Alto)
+- 📱 Interface responsiva para desktop e mobile
+- ⚙️ Painel administrativo com navegação simples e moderna
+
+## ⚙️ Instalação e Uso
+
+```bash
+# Clone o repositório
+git clone https://github.com/seu-usuario/seu-repo.git
+
+# Acesse o diretório
+cd seu-repo
+
+# Instale as dependências
+npm install
+
+# Inicie o servidor de desenvolvimento
+npm run dev
+```
