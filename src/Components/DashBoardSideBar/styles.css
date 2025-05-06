@@ -41,7 +41,7 @@
 }
 @media screen and (max-width: 1004px){
     .dashboardSideBar{
-        position: absolute;
+        position: fixed;
         left: -300px;
     }
 }
