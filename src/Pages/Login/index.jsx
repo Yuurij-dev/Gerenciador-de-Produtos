@@ -14,6 +14,8 @@ export function Login() {
     const [isLoggedIn, setIsLoggedIn] = useState(false)
 
     useEffect( () => {
+        localStorage.removeItem('user');
+        
         const userLogged = localStorage.getItem('user')
 
         if(userLogged){
